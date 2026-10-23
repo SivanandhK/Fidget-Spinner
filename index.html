@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fidget Spinner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button type="button" id="mute" aria-pressed="true">Sound off</button>
+  <main>
+    <svg id="spinner" viewBox="0 0 200 200" aria-label="Classic three-lobed fidget spinner">
+      <defs>
+        <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.5"/>
+        </filter>
+      </defs>
+      <!-- Invisible disc so dragging anywhere near the symbol feels natural. -->
+      <circle cx="100" cy="100" r="96" fill="transparent"/>
+      <g id="rotor" filter="url(#soft)">
+        <!-- Three rounded arms and lobes restore the classic spinner silhouette. -->
+        <g fill="none" stroke="var(--spinner-fill)" stroke-width="25" stroke-linecap="round">
+          <path d="M100 100 L100 47"/>
+          <path d="M100 100 L145.9 126.5"/>
+          <path d="M100 100 L54.1 126.5"/>
+        </g>
+        <g fill="var(--spinner-fill)" stroke="var(--spinner-highlight)" stroke-width="1.2">
+          <circle cx="100" cy="43" r="31"/>
+          <circle cx="149.4" cy="128.5" r="31"/>
+          <circle cx="50.6" cy="128.5" r="31"/>
+        </g>
+        <g fill="var(--bg)" stroke="var(--spinner-highlight)" stroke-width="1.2">
+          <circle cx="100" cy="43" r="6"/>
+          <circle cx="149.4" cy="128.5" r="6"/>
+          <circle cx="50.6" cy="128.5" r="6"/>
+        </g>
+        <circle cx="100" cy="100" r="19" fill="var(--spinner-fill)" stroke="var(--spinner-highlight)" stroke-width="1.2"/>
+        <circle cx="100" cy="100" r="9" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.2"/>
+        <circle cx="100" cy="100" r="3.5" fill="var(--spinner-highlight)"/>
+      </g>
+    </svg>
+    <div class="stats">
+      <div><span class="label">RPM</span><span id="rpm">0</span></div>
+      <div><span class="label">Rotations</span><span id="rots">0</span></div>
+    </div>
+    <p id="hint">Space to spin / drag to flick</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
